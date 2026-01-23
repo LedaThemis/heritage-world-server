@@ -1,9 +1,9 @@
 import { Room, Client } from "@colyseus/core";
-import { MyRoomState, Player } from "./schema/PlayerRoomState";
+import { PlayerRoomState, Player } from "./schema/PlayerRoomState";
 
-export class MyRoom extends Room<MyRoomState> {
+export class PlayerRoom extends Room<PlayerRoomState> {
   maxClients = 50;
-  state = new MyRoomState();
+  state = new PlayerRoomState();
 
   onCreate(options: any) {
     this.onMessage("setName", (client, data) => {

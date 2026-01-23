@@ -7,6 +7,6 @@ export class Player extends Schema {
   @type("number") z: number;
 }
 
-export class MyRoomState extends Schema {
+export class PlayerRoomState extends Schema {
   @type({ map: Player }) players = new MapSchema<Player>();
 }
