@@ -15,6 +15,10 @@ export class PlayerRoom extends Room<PlayerRoomState> {
       player.x = data.x;
       player.y = data.y;
       player.z = data.z;
+      player.rotX = data.rotX;
+      player.rotY = data.rotY;
+      player.rotZ = data.rotZ;
+      player.rotW = data.rotW;
     });
   }
 
