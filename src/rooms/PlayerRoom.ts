@@ -20,6 +20,9 @@ export class PlayerRoom extends Room<PlayerRoomState> {
       player.rotZ = data.rotZ;
       player.rotW = data.rotW;
     });
+    this.onMessage("getPlayerCount", (client) => {
+      client.send("playerCount", { count: this.state.players.size });
+    });
   }
 
   onJoin(client: Client, options: any) {
