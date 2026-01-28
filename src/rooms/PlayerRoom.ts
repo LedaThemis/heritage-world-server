@@ -4,7 +4,7 @@ import { PlayerRoomState, Player } from "./schema/PlayerRoomState";
 export class PlayerRoom extends Room<PlayerRoomState> {
   maxClients = 50;
   state = new PlayerRoomState();
-  allowedEmotes = ["👋", "👍", "❤️", "😂", "😢", "😮", "🎉", "🔥", "⭐", "💯"];
+  allowedEmotes = ["👋", "👍", "❤️", "😂", "😢", "😮", "🎉", "🔥", "🙏", "💯"];
 
   onCreate(options: any) {
     this.onMessage("setName", (client, data) => {
