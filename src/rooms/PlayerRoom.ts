@@ -4,6 +4,7 @@ import { PlayerRoomState, Player } from "./schema/PlayerRoomState";
 export class PlayerRoom extends Room<PlayerRoomState> {
   maxClients = 50;
   state = new PlayerRoomState();
+  allowedEmotes = ["👋", "👍", "❤️", "😂", "😢", "😮", "🎉", "🔥", "⭐", "💯"];
 
   onCreate(options: any) {
     this.onMessage("setName", (client, data) => {
@@ -22,6 +23,17 @@ export class PlayerRoom extends Room<PlayerRoomState> {
     });
     this.onMessage("getPlayerCount", (client) => {
       client.send("playerCount", { count: this.state.players.size });
+    });
+    this.onMessage("getAllowedEmotes", (client) => {
+      client.send("allowedEmotes", { emotes: this.allowedEmotes });
+    });
+    this.onMessage("sendEmote", (client, data) => {
+      if (this.allowedEmotes.includes(data.emote)) {
+        this.broadcast("playerEmote", {
+          sessionId: client.sessionId,
+          emote: data.emote
+        });
+      }
     });
   }
 
