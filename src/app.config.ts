@@ -13,7 +13,7 @@ export default config({
     /**
      * Define your room handlers:
      */
-    gameServer.define("central", PlayerRoom);
+    gameServer.define("central", PlayerRoom).filterBy(["siteId"]);
   },
 
   initializeExpress: (app) => {
